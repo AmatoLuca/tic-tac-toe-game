@@ -7,3 +7,5 @@ export type PlayerNameComponent = {
   initialName: string;
   isEditing: boolean;
 };
+
+export type GameBoard = Array<Array<string | null>>;
