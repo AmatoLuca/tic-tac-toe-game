@@ -10,12 +10,12 @@ const initialGameBoard = [
 export default function GameBoard() {
   const [gameBoard, setGameBoard] = useState<type.GameBoard>(initialGameBoard);
 
-  function handleSelectSquare(rowIndex: number, ColIndex: number): void {
+  function handleSelectSquare(rowIndex: number, colIndex: number): void {
     setGameBoard((prevGameBoard) => {
       const updatedBoard: type.GameBoard = [
         ...prevGameBoard.map((innerArray) => [...innerArray]),
       ];
-      updatedBoard[rowIndex][ColIndex] = 'X';
+      updatedBoard[rowIndex][colIndex] = 'X';
       return updatedBoard;
     });
   }
