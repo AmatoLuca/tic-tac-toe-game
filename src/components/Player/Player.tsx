@@ -6,16 +6,16 @@ export default function Player({ name, symbol }: type.PlayerComponent) {
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEditClick() {
-    setIsEditing((prev) => !prev);
+    setIsEditing((isEditing) => !isEditing);
   }
 
   return (
     <li>
       <span className="player">
-        <PlayerName name={name} isEditing={isEditing} />
+        <PlayerName initialName={name} isEditing={isEditing} />
         <span className="player-symbol">{symbol}</span>
       </span>
-      <button onClick={handleEditClick}>Edit</button>
+      <button onClick={handleEditClick}>{isEditing ? 'Salve' : 'Edit'}</button>
     </li>
   );
 }

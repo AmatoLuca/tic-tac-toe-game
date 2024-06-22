@@ -1,13 +1,23 @@
 import * as type from '../../models';
+import React, { useState, useEffect } from 'react';
 
 export default function PlayerName({
-  name,
+  initialName,
   isEditing,
 }: type.PlayerNameComponent) {
-  let playerName = <span className="player-name">{name}</span>;
+  const [playerName, setPlayerName] = useState(initialName);
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setPlayerName(event.target.value);
+  }
+
+  let editablePlayerName = <span className="player-name">{playerName}</span>;
 
   if (isEditing) {
-    playerName = <input type="text" required />;
+    editablePlayerName = (
+      <input type="text" required value={playerName} onChange={handleChange} />
+    );
   }
-  return playerName;
+
+  return editablePlayerName;
 }

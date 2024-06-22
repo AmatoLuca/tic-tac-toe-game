@@ -4,6 +4,6 @@ export type PlayerComponent = {
 };
 
 export type PlayerNameComponent = {
-  name: string;
+  initialName: string;
   isEditing: boolean;
 };
