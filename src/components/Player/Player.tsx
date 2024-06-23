@@ -6,7 +6,7 @@ export default function Player({
   name,
   symbol,
   isActive,
-}: type.PlayerComponent) {
+}: type.PlayerComponentProps) {
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEditClick() {

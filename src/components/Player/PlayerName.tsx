@@ -1,10 +1,10 @@
 import * as type from '../../models';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 export default function PlayerName({
   initialName,
   isEditing,
-}: type.PlayerNameComponent) {
+}: type.PlayerNameComponentProps) {
   const [playerName, setPlayerName] = useState(initialName);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
