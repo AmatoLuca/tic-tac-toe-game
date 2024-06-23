@@ -2,7 +2,11 @@ import { useState } from 'react';
 import * as type from '../../models';
 import PlayerName from './PlayerName';
 
-export default function Player({ name, symbol }: type.PlayerComponent) {
+export default function Player({
+  name,
+  symbol,
+  isActive,
+}: type.PlayerComponent) {
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEditClick() {
@@ -10,7 +14,7 @@ export default function Player({ name, symbol }: type.PlayerComponent) {
   }
 
   return (
-    <li>
+    <li className={isActive ? 'active' : undefined}>
       <span className="player">
         <PlayerName initialName={name} isEditing={isEditing} />
         <span className="player-symbol">{symbol}</span>
