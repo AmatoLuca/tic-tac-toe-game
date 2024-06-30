@@ -30,3 +30,7 @@ export type GameTurns = {
 };
 
 export type GameTurnsState = Array<GameTurns>;
+
+export type LofComponentProps = {
+  turns: GameTurns[];
+};
