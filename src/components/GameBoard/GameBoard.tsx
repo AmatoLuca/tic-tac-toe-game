@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import * as type from '../../models';
 
 const initialGameBoard = [
@@ -9,21 +8,15 @@ const initialGameBoard = [
 
 export default function GameBoard({
   onSelectSquare,
-  activePlayerSymbol,
+  turns,
 }: type.GameBoardProps) {
-  const [gameBoard, setGameBoard] =
-    useState<type.GameBoardState>(initialGameBoard);
+  let gameBoard: type.GameBoardState = initialGameBoard;
 
-  function handleSelectSquare(rowIndex: number, colIndex: number): void {
-    setGameBoard((prevGameBoard) => {
-      const updatedBoard: type.GameBoardState = [
-        ...prevGameBoard.map((innerArray) => [...innerArray]),
-      ];
-      updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
-      return updatedBoard;
-    });
+  for (const turn of turns) {
+    const { square, player } = turn;
+    const { row, col } = square;
 
-    onSelectSquare();
+    gameBoard[row][col] = player;
   }
 
   return (
@@ -33,7 +26,7 @@ export default function GameBoard({
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => handleSelectSquare(rowIndex, colIndex)}>
+                <button onClick={() => onSelectSquare(rowIndex, colIndex)}>
                   {playerSymbol}
                 </button>
               </li>
