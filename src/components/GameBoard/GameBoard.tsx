@@ -1,10 +1,5 @@
 import * as type from '../../models';
-
-const initialGameBoard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
+import { initialGameBoard } from '../../utils';
 
 export default function GameBoard({
   onSelectSquare,
