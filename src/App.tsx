@@ -4,7 +4,7 @@ import Player from './components/Player/Player';
 import GameBoard from './components/GameBoard/GameBoard';
 import Log from './components/Log/Log';
 import * as type from './models';
-import { derivedActivePlayer } from './utils';
+import { derivedActivePlayer, WINNING_COMBINATIONS } from './utils';
 
 function App() {
   const [gameTurns, setGameTurns] = useState<type.GameTurnsState>([]);
