@@ -18,7 +18,7 @@ export type GameBoardState = Array<Array<string | null>>;
 
 export type GameBoardProps = {
   onSelectSquare: Function;
-  turns: GameTurnsState;
+  board: GameBoardState;
 };
 
 export type GameTurns = {
