@@ -6,11 +6,16 @@ export default function Player({
   name,
   symbol,
   isActive,
+  onChangeName,
 }: type.PlayerComponentProps) {
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEditClick() {
     setIsEditing((isEditing) => !isEditing);
+
+    if (isEditing) {
+      onChangeName(symbol);
+    }
   }
 
   return (

@@ -6,14 +6,21 @@ import Log from './components/Log/Log';
 import * as type from './models';
 import { derivedActivePlayer } from './utils';
 import { useGameBoard, useCombination } from './hooks';
+import GameOver from './components/GameOver/GameOver';
 
 function App() {
+  const [players, setPlayers] = useState({
+    X: 'Player 1',
+    O: 'Player 2',
+  });
   const [gameTurns, setGameTurns] = useState<type.GameTurnsState>([]);
   const activePlayer = derivedActivePlayer(gameTurns);
 
   // Custom Hooks
   let [gameBoard] = useGameBoard(gameTurns);
-  const [winner] = useCombination(gameBoard);
+  const [winner] = useCombination(gameBoard, players);
+
+  const hasDraw = gameTurns.length === 9 && !winner;
 
   function handleSelectSquare(rowIndex: number, colIndex: number) {
     setGameTurns((prevTurns: any) => {
@@ -31,6 +38,22 @@ function App() {
     });
   }
 
+  function handleRestart() {
+    setGameTurns([]);
+  }
+
+  function handlePlayerNameChange(
+    symbol: type.ActivePlayerSymbol,
+    newName: string
+  ) {
+    setPlayers((prePlayers) => {
+      return {
+        ...prePlayers,
+        [symbol]: newName,
+      };
+    });
+  }
+
   return (
     <>
       <Header />
@@ -41,14 +64,18 @@ function App() {
               name={'Player 1'}
               symbol={'X'}
               isActive={activePlayer === type.ActivePlayerSymbol.PLAYER_ONE}
+              onChangeName={handlePlayerNameChange}
             />
             <Player
               name={'Player 2'}
               symbol={'O'}
               isActive={activePlayer === type.ActivePlayerSymbol.PLAYER_TWO}
+              onChangeName={handlePlayerNameChange}
             />
           </ol>
-          {winner && <p>You won, {winner}!</p>}
+          {(winner || hasDraw) && (
+            <GameOver winner={winner} onRestart={handleRestart} />
+          )}
           <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard} />
         </div>
         <Log turns={gameTurns} />

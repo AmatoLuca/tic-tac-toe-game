@@ -1,7 +1,11 @@
+import { useEffect } from 'react';
 import * as type from '../models';
 import { WINNING_COMBINATIONS } from '../utils';
 
-export const useCombination = (gameBoard: type.GameBoardState) => {
+export const useCombination = (
+  gameBoard: type.GameBoardState,
+  players: any
+) => {
   let winner: string | undefined = undefined;
 
   for (const combination of WINNING_COMBINATIONS) {
@@ -17,9 +21,14 @@ export const useCombination = (gameBoard: type.GameBoardState) => {
       firstSquareSymbol === secondSquareSymbol &&
       firstSquareSymbol === thirdSquareSymbol
     ) {
-      winner = firstSquareSymbol;
+      console.log('xx', players[firstSquareSymbol]);
+      winner = players[firstSquareSymbol];
     }
   }
+
+  useEffect(() => {
+    console.log('@@', players);
+  }, [players]);
 
   return [winner];
 };

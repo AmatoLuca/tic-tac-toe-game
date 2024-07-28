@@ -2,6 +2,7 @@ export type PlayerComponentProps = {
   name: string;
   symbol: string;
   isActive: boolean;
+  onChangeName: Function;
 };
 
 export type PlayerNameComponentProps = {
@@ -13,6 +14,11 @@ export enum ActivePlayerSymbol {
   PLAYER_ONE = 'X',
   PLAYER_TWO = 'O',
 }
+
+export type PlayersCustom = {
+  [ActivePlayerSymbol.PLAYER_ONE]: string;
+  [ActivePlayerSymbol.PLAYER_TWO]: string;
+};
 
 export type GameBoardState = Array<Array<string | null>>;
 
@@ -33,4 +39,9 @@ export type GameTurnsState = Array<GameTurns>;
 
 export type LofComponentProps = {
   turns: GameTurns[];
+};
+
+export type GameOverProps = {
+  winner: string | undefined;
+  onRestart: () => void;
 };
