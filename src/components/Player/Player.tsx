@@ -9,19 +9,28 @@ export default function Player({
   onChangeName,
 }: type.PlayerComponentProps) {
   const [isEditing, setIsEditing] = useState(false);
+  const [newPlayerName, setNewPlayerName] = useState<string>('');
 
   function handleEditClick() {
     setIsEditing((isEditing) => !isEditing);
 
     if (isEditing) {
-      onChangeName(symbol);
+      onChangeName(symbol, newPlayerName);
     }
+  }
+
+  function handleNewPlayerName(playerName: string) {
+    setNewPlayerName(playerName);
   }
 
   return (
     <li className={isActive ? 'active' : undefined}>
       <span className="player">
-        <PlayerName initialName={name} isEditing={isEditing} />
+        <PlayerName
+          initialName={name}
+          isEditing={isEditing}
+          handleNewName={handleNewPlayerName}
+        />
         <span className="player-symbol">{symbol}</span>
       </span>
       <button onClick={handleEditClick}>{isEditing ? 'Salve' : 'Edit'}</button>

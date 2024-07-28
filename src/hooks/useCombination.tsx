@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import * as type from '../models';
 import { WINNING_COMBINATIONS } from '../utils';
 
@@ -21,14 +20,9 @@ export const useCombination = (
       firstSquareSymbol === secondSquareSymbol &&
       firstSquareSymbol === thirdSquareSymbol
     ) {
-      console.log('xx', players[firstSquareSymbol]);
       winner = players[firstSquareSymbol];
     }
   }
-
-  useEffect(() => {
-    console.log('@@', players);
-  }, [players]);
 
   return [winner];
 };

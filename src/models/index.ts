@@ -8,6 +8,7 @@ export type PlayerComponentProps = {
 export type PlayerNameComponentProps = {
   initialName: string;
   isEditing: boolean;
+  handleNewName: (name: string) => void;
 };
 
 export enum ActivePlayerSymbol {

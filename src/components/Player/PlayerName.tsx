@@ -1,9 +1,10 @@
 import * as type from '../../models';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function PlayerName({
   initialName,
   isEditing,
+  handleNewName,
 }: type.PlayerNameComponentProps) {
   const [playerName, setPlayerName] = useState(initialName);
 
@@ -18,6 +19,10 @@ export default function PlayerName({
       <input type="text" required value={playerName} onChange={handleChange} />
     );
   }
+
+  useEffect(() => {
+    handleNewName(playerName);
+  }, [playerName]);
 
   return editablePlayerName;
 }
