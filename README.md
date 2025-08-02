@@ -1,6 +1,6 @@
 # Tic Tac Toe Game
 
-👉 **Live Demo:** [https://tuo-progetto.netlify.app](ticatactoegame.netlify.app)
+👉 **Live Demo:** [https://tuo-progetto.netlify.app](https://ticatactoegame.netlify.app/)
 
 A simple personal project built with **React.js** and **TypeScript** to recreate the classic Tic Tac Toe game.
 
