@@ -9,7 +9,7 @@ A simple personal project built with **React.js** and **TypeScript** to recreate
 - 🎯 Interactive 3x3 grid
 - 🔁 Real-time state updates
 - 🧠 Game logic to detect wins and draws
-- 🧼 Clean UI and responsive design
+- 🧼 Clean UI
 - ⚛️ Built with **React + Vite + TypeScript**
 
 ## Tech Stack
